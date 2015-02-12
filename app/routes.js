@@ -1,7 +1,10 @@
 module.exports = function(app, passport) {
     var User = require('../app/models/user.js');
-    var WorkLog = require('../app/models/worklog.js');
+    var WorkLog = require('../app/models/workLog.js');
     var Admin = require('../admin.js');
+    var Data = require('../data.js');
+    var bodyParser = require('body-parser');
+    app.use(bodyParser());
     // route for home page
     app.get('/', function(req, res) {
         res.render('index.ejs'); // load the index.ejs file
@@ -33,6 +36,15 @@ module.exports = function(app, passport) {
     app.get('/logout', function(req, res) {
         req.logout();
         res.redirect('/');
+    });
+
+    app.get('/entrySuccess', function(req,res) {
+        res.render('success.ejs');
+    });
+
+    app.post('/enterWorkLog', isLoggedIn, Data.createWorkLog, function(req, res){
+        console.log(req.workLog);
+        res.redirect('/entrySuccess');
     });
     
   

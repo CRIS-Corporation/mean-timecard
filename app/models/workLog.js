@@ -2,14 +2,15 @@
 // load the things we need
 var mongoose = require('mongoose');
 // define the schema for our user model
-
-var workLogSchema = mongoose.Schema({
+var Schema = mongoose.Schema;
+var workLogSchema = new Schema({
     
-    startTime : Date,
-    endTime: Date,
+    createdTime : Date,
+    startTime : String,
+    endTime: String,
     worker: String,
     project: String
 
 });
 
-module.exports = mongoose.model('workLog', workLogSchema);
+module.exports = mongoose.model('WorkLog', workLogSchema);

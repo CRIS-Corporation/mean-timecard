@@ -24,13 +24,16 @@
         <div class="col-sm-6">
             <h2>Please fill out work below:</h2>
             <div class="well">
-                <ul>
-                <% for(var i=0; i < users.length; i++) { %>
-                   <tr>
-                     <li><%= users[i].google.name %> | <%= users[i].google.email %> | <%= users[i].google.role %></li>
-                   </tr>
-                <% } %>
-                </ul>
+                <form action="/enterWorkLog" method="POST">
+                    Start Time:<br>
+                    <input type="text" name='startTime'><br>
+                    End Time:<br>
+                    <input type="text" name='endTime'><br>
+                    Project:<br>
+                    <input type="text" name='project'><br>
+                    <br>
+                    <input type="submit" value="Submit">
+                </form>
             </div>
         </div>
 
