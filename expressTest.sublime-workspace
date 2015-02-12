@@ -1,0 +1,391 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"n",
+				"naughty_file_count"
+			],
+			[
+				"l",
+				"line_text_array"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "server.js",
+			"settings":
+			{
+				"buffer_size": 1667,
+				"line_ending": "Unix",
+				"name": "// get all the tools we need"
+			}
+		},
+		{
+			"file": "config/passport.js",
+			"settings":
+			{
+				"buffer_size": 3346,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/user.js",
+			"settings":
+			{
+				"buffer_size": 959,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/routes.js",
+			"settings":
+			{
+				"buffer_size": 2214,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/admin.ejs",
+			"settings":
+			{
+				"buffer_size": 986,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/andrew/Desktop/expressTestApp/expressTest/views/login.ejs",
+		"/Users/andrew/Desktop/expressTestApp/expressTest/views/index.ejs",
+		"/Users/andrew/Desktop/expressTestApp/expressTest/app/models/userList.js",
+		"/Users/andrew/Desktop/expressTestApp/expressTest/auth.js",
+		"/Users/andrew/Desktop/expressTestApp/expressTest/views/profile.ejs",
+		"/Users/andrew/Desktop/expressTestApp/expressTest/config/database.js",
+		"/Users/andrew/Desktop/expressTestApp/expressTest/app/routes.js",
+		"/Users/andrew/Desktop/expressTestApp/expressTest/config/auth.js",
+		"/Users/andrew/Desktop/expressTestApp/expressTest/package.json",
+		"/Users/andrew/Desktop/expressTestApp/expressTest/views/signup.ejs",
+		"/Users/andrew/Desktop/expressTestApp/expressTest/app/models/user.js",
+		"/Users/andrew/Desktop/expressTestApp/expressTest/config/passport.js",
+		"/Users/andrew/Desktop/expressTestApp/expressTest/views/signup.js",
+		"/Users/andrew/Desktop/expressTestApp/expressTest/routes.js",
+		"/Users/andrew/Desktop/expressTestApp/expressTest/routes/index.js",
+		"/Users/andrew/Desktop/expressTestApp/expressTest/models/user.js",
+		"/Users/andrew/Desktop/expressTestApp/expressTest/app.js",
+		"/Users/andrew/Desktop/expressTestApp/expressTest/views/login.hjs",
+		"/Users/andrew/Desktop/JanrainGithub/jr-config/conf/dot-bash_profile",
+		"/Users/andrew/Desktop/Sites/NBPHP1/ZDCorsTest/zdrequest.js",
+		"/Users/andrew/Desktop/Sites/NBPHP1/ZDCorsTest/index.html",
+		"/Users/andrew/Desktop/cmgfind.php",
+		"/Users/andrew/Desktop/export-inactive-users.py",
+		"/Users/andrew/Desktop/atlasTutorial/helloworld.html",
+		"/Users/andrew/Desktop/atlasTutorial/atlassian-connect.json",
+		"/Users/andrew/Desktop/JanrainRepos/CaptureCustomerDev/flows/foxNewsFlow.json",
+		"/Users/andrew/Desktop/JanrainRepos/CaptureCustomerDev/config/prod.py",
+		"/Users/andrew/Desktop/JanrainRepos/CaptureCustomerDev/translate.py",
+		"/Users/andrew/Desktop/janrainConnectTokenVerifyLogging.php",
+		"/Users/andrew/Desktop/Sites/NBPHP1/find_invalid_users.php",
+		"/Users/andrew/Desktop/Sites/NBPHP1/cmgfind.php",
+		"/Users/andrew/Desktop/MiscCapture/CaptureCustomerDev/config/prod.py",
+		"/Applications/MAMP/htdocs/standard/StandardMAMPPHPSite/index.php",
+		"/Users/andrew/Desktop/Sites/NBPHP1/JRCurl.php",
+		"/Users/andrew/Desktop/Sites/NBPHP1/socialContent.php",
+		"/Users/andrew/Desktop/MiscCapture/CaptureCustomerDev/flows/standard.json",
+		"/Users/andrew/Desktop/MiscCapture/CaptureCustomerDev/config/dev.py",
+		"/Users/andrew/Downloads/janrain_capture/janrain_capture.js",
+		"/Users/andrew/Desktop/MiscCapture/CaptureCustomerDev/mails/ru-RU/resendVerification.html",
+		"/Users/andrew/Desktop/MiscCapture/CaptureCustomerDev/mails/ru-RU/passwordRecover.html",
+		"/Users/andrew/Desktop/MiscCapture/CaptureCustomerDev/mails/ru-RU/changeVerification.html",
+		"/Users/andrew/Desktop/MiscCapture/CaptureCustomerDev/mails/ru/resendVerification.html",
+		"/Users/andrew/Desktop/MiscCapture/CaptureCustomerDev/mails/ru/passwordRecover.html",
+		"/Users/andrew/Desktop/MiscCapture/CaptureCustomerDev/mails/fr-FR/newVerification.html",
+		"/Users/andrew/Desktop/MiscCapture/CaptureCustomerDev/mails/fr-FR/changeVerification.html",
+		"/Users/andrew/Desktop/MiscCapture/CaptureCustomerDev/mails/fr/passwordRecover.html",
+		"/Users/andrew/Desktop/MiscCapture/CaptureCustomerDev/mails/es-ES/passwordRecover.html",
+		"/Users/andrew/Desktop/MiscCapture/CaptureCustomerDev/mails/es-ES/newVerification.html",
+		"/Users/andrew/Desktop/MiscCapture/CaptureCustomerDev/mails/es-ES/changeVerification.html",
+		"/Users/andrew/Desktop/MiscCapture/CaptureCustomerDev/mails/es/resendVerification.html",
+		"/Users/andrew/Desktop/MiscCapture/CaptureCustomerDev/mails/es/passwordRecover.html",
+		"/Users/andrew/Desktop/MiscCapture/CaptureCustomerDev/mails/es/newVerification.html",
+		"/Users/andrew/Desktop/MiscCapture/CaptureCustomerDev/mails/en/resendVerification.html",
+		"/Users/andrew/Desktop/MiscCapture/CaptureCustomerDev/mails/en/newVerification.html",
+		"/Users/andrew/Desktop/MiscCapture/CaptureCustomerDev/mails/en-US/resendVerification.html",
+		"/Users/andrew/Desktop/MiscCapture/CaptureCustomerDev/mails/en-US/newVerification.html",
+		"/Users/andrew/Desktop/MiscCapture/CaptureCustomerDev/mails/en-US/changeVerification.html",
+		"/Users/andrew/Desktop/MiscCapture/CaptureCustomerDev/mails/fr-FR/newVerification.txt",
+		"/Users/andrew/Desktop/MiscCapture/CaptureCustomerDev/mails/fr/changeVerification.html",
+		"/Users/andrew/Desktop/whatever.php",
+		"/Users/andrew/src/pse-tools/pse/ccd/mails.py",
+		"/Users/andrew/Desktop/ZDExt/TestJRSearch_app/app.js",
+		"/Users/andrew/Desktop/TestZDExt/TestJRSearch_app/app.js",
+		"/Users/andrew/Desktop/Sites/NBPHP1/registration.html",
+		"/Applications/MAMP/htdocs/standard/StandardMAMPPHPSite/socialContent FBG+Data.php"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"edit_state"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "server.js",
+					"settings":
+					{
+						"buffer_size": 1667,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								606,
+								606
+							]
+						],
+						"settings":
+						{
+							"auto_name": "// get all the tools we need",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 16.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "config/passport.js",
+					"settings":
+					{
+						"buffer_size": 3346,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2598,
+								2598
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 429.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/models/user.js",
+					"settings":
+					{
+						"buffer_size": 959,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								850,
+								850
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/routes.js",
+					"settings":
+					{
+						"buffer_size": 2214,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								749,
+								749
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 237.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "views/admin.ejs",
+					"settings":
+					{
+						"buffer_size": 986,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								916,
+								916
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}
