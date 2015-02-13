@@ -5,7 +5,14 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var workLogSchema = new Schema({
     
-    createdTime : Date,
+    created :{
+    	createdTime: Date,
+    	createdUser: String
+    },
+    edited : {
+    	editedTimes: Date,
+    	editedUsers: String
+    },
     startTime : String,
     endTime: String,
     worker: String,

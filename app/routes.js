@@ -6,6 +6,7 @@ module.exports = function(app, passport) {
     var bodyParser = require('body-parser');
     app.use(bodyParser());
     // route for home page
+
     app.get('/', function(req, res) {
         res.render('index.ejs'); // load the index.ejs file
     });
@@ -46,12 +47,129 @@ module.exports = function(app, passport) {
         console.log(req.workLog);
         res.redirect('/entrySuccess');
     });
-    
-  
+    // API routes
+    app.get('/api/users', Admin.getUsers, function(req, res){
+        res.send(req.result);
+    });
+    app.post('/api/users',function(req, res) {
+        
+        var user = new User();      // create a new instance of the Bear model
+        user.google.name = req.body.name;  // set the bears name (comes from the request)
 
-    // facebook routes
-    // twitter routes
+        // save the bear and check for errors
+        user.save(function(err) {
+            if (err)
+                res.send(err);
 
+            res.json({ message: 'User created!' });
+        });
+        
+    });
+
+    app.get('/api/worklogs', Data.getWorkLogs, function(req, res){
+        res.send(req.result);
+    });
+
+    app.post('/api/workLogs',function(req, res) {
+        
+        var workLog = new WorkLog();      // create a new instance of the Bear model
+        workLog.startTime = req.body.startTime;  // set the bears name (comes from the request)
+
+        // save the bear and check for errors
+        workLog.save(function(err) {
+            if (err)
+                res.send(err);
+
+            res.json({ message: 'WorkLog created!' });
+        });
+        
+    });
+
+    app.route('/api/users/:_id')
+
+        // get the user with that id (accessed at GET http://localhost:8080/api/bears/:bear_id)
+        .get(function(req, res) {
+            User.findById(req.params._id, function(err, user) {
+                if (err)
+                    res.send(err);
+                res.json(user);
+            });
+        })
+
+        // update the user with this id (accessed at PUT http://localhost:8080/api/bears/:bear_id)
+        .put(function(req, res) {
+            User.findById(req.params._id, function(err, user) {
+
+                if (err)
+                    res.send(err);
+
+                user.google.name = req.body.name;  // update the bears info
+
+                // save the bear
+                user.save(function(err) {
+                    if (err)
+                        res.send(err);
+
+                    res.json({ message: 'User updated!' });
+                });
+
+            });
+        })
+
+        // delete the user with this id (accessed at DELETE http://localhost:8080/api/bears/:bear_id)
+        .delete(function(req, res) {
+            User.remove({
+                _id: req.params._id
+            }, function(err, bear) {
+                if (err)
+                    res.send(err);
+
+                res.json({ message: 'Successfully deleted' });
+            });
+        });
+
+    app.route('/api/worklogs/:_id')
+
+        // get the bear with that id (accessed at GET http://localhost:8080/api/bears/:bear_id)
+        .get(function(req, res) {
+            WorkLog.findById(req.params._id, function(err, workLog) {
+                if (err)
+                    res.send(err);
+                res.json(workLog);
+            });
+        })
+
+        // update the bear with this id (accessed at PUT http://localhost:8080/api/bears/:bear_id)
+        .put(function(req, res) {
+            WorkLog.findById(req.params._id, function(err, workLog) {
+
+                if (err)
+                    res.send(err);
+
+                workLog.startTime = req.body.startTime;  // update the bears info
+
+                // save the bear
+                workLog.save(function(err) {
+                    if (err)
+                        res.send(err);
+
+                    res.json({ message: 'WorkLog updated!' });
+                });
+
+            });
+        })
+
+        // delete the bear with this id (accessed at DELETE http://localhost:8080/api/bears/:bear_id)
+        .delete(function(req, res) {
+            WorkLog.remove({
+                _id: req.params._id
+            }, function(err, workLog) {
+                if (err)
+                    res.send(err);
+
+                res.json({ message: 'Successfully deleted' });
+            });
+        });
     // =====================================
     // GOOGLE ROUTES =======================
     // =====================================
@@ -71,7 +189,8 @@ module.exports = function(app, passport) {
             }*/
             successRedirect : '/admin',
             failureRedirect : '/'
-        }));
+        })
+    );
 
 // route middleware to make sure a user is logged in
 /*function getUsers(req,res,next){

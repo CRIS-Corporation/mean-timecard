@@ -8,16 +8,13 @@ exports.createWorkLog = function(req,res,next){
 	var newWorkLog = new WorkLog();
 	var currentDate = new Date;
 	currentDate.setUTCHours(currentDate.getUTCHours() -8);
-	console.log('Made Log');
 	// set all of the relevant information
-	newWorkLog.createdTime = currentDate.getTime();
-	console.log('Set Date');
+	newWorkLog.created.createdTime = currentDate.getTime();
+	newWorkLog.created.createdUser = req.user.google.name;
 	newWorkLog.startTime = req.body.startTime;
-	console.log('Set Start Time');
 	newWorkLog.endTime  = req.body.endTime;
-	console.log('Set End Time');
+	newWorkLog.project = req.body.project;
 	newWorkLog.worker = req.user.google.name;
-	console.log('Set Name');
 	// save the user
 	newWorkLog.save(function(err) {
 	    if (err) {
@@ -30,3 +27,16 @@ exports.createWorkLog = function(req,res,next){
 	    }
 	});
 }
+
+exports.getWorkLogs = function(req,res,next){
+        WorkLog.find({},{'worker':1,'project':1,'startTime':1,'endTime':1},function(err,result){
+            if (err) {
+                console.log('Find was no good');
+            }
+            else {    
+                console.log(result);
+                req.result= result;
+                next();
+            } 
+        });
+    }
