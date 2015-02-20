@@ -31,7 +31,7 @@ exports.createWorkLog = function(req,res,next){
 exports.getWorkLogs = function(req,res,next){
         WorkLog.find({},{'worker':1,'project':1,'startTime':1,'endTime':1},function(err,result){
             if (err) {
-                console.log('Find was no good');
+                console.log('Work log find was no good');
             }
             else {    
                 console.log(result);
