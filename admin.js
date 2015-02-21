@@ -1,8 +1,8 @@
 var User = require('./app/models/user.js');
 
 exports.getUsers = function(req,res,next){
-        User.find({},{'google.name':1,'google.email':1,'google.role':1},function(err,result){
-            if (err) {
+        User.find({},{'name':1,'email':1,'role':1},function(err,result){
+            if (req.err) {
                 console.log('Admin User Find error');
             }
             else {    
@@ -15,11 +15,11 @@ exports.getUsers = function(req,res,next){
 
 exports.isAdmin = function(req, res, next) {
     user = req.user;
-    if (err) {
+    if (req.err) {
         console.log('Admin Auth error');
     }
     else {
-        if (user.google.role == 'Admin'){
+        if (user.role == 'Admin'){
             next();
         }
         else {

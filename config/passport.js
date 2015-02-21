@@ -49,7 +49,7 @@ module.exports = function(passport) {
         process.nextTick(function() {
 
             // try to find the user based on their google id
-            User.findOne({ 'google.id' : profile.id }, function(err, user) {
+            User.findOne({ 'userId' : profile.id }, function(err, user) {
                 if (err)
                     return done(err);
 
@@ -62,15 +62,15 @@ module.exports = function(passport) {
                     var newUser          = new User();
 
                     // set all of the relevant information
-                    newUser.google.id    = profile.id;
-                    newUser.google.token = token;
-                    newUser.google.name  = profile.displayName;
-                    newUser.google.email = profile.emails[0].value; // pull the first email
-                    if (newUser.google.email == 'avidreder@gmail.com' || newUser.google.email == 'andrew.cauthorn@gmail.com' || newUser.google.email == 'cauthornrederis@gmail.com'){
-                        newUser.google.role = 'Admin';
+                    newUser.userId    = profile.id;
+                    newUser.token = token;
+                    newUser.name  = profile.displayName;
+                    newUser.email = profile.emails[0].value; // pull the first email
+                    if (newUser.email == 'avidreder@gmail.com' || newUser.email == 'andrew.cauthorn@gmail.com' || newUser.email == 'cauthornrederis@gmail.com'){
+                        newUser.role = 'Admin';
                     }
                     else {
-                        newUser.google.role = 'User';
+                        newUser.role = 'User';
                     }
                     // save the user
                     newUser.save(function(err) {

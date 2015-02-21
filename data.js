@@ -10,11 +10,11 @@ exports.createWorkLog = function(req,res,next){
 	currentDate.setUTCHours(currentDate.getUTCHours() -8);
 	// set all of the relevant information
 	newWorkLog.created.createdTime = currentDate.getTime();
-	newWorkLog.created.createdUser = req.user.google.name;
+	newWorkLog.created.createdUser = req.user.name;
 	newWorkLog.startTime = req.body.startTime;
 	newWorkLog.endTime  = req.body.endTime;
 	newWorkLog.project = req.body.project;
-	newWorkLog.worker = req.user.google.name;
+	newWorkLog.worker = req.user.name;
 	// save the user
 	newWorkLog.save(function(err) {
 	    if (err) {

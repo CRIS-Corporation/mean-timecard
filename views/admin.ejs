@@ -11,10 +11,10 @@
 <div class="container">
 
     <div class="page-header text-center">
-        <h1><%= user.google.name %></h1>
+        <h1><%= user.name %></h1>
         <p>
-            <h3 class="text-danger"><%= user.google.role %></h3>
-            <strong><%= user.google.email %></strong><br> 
+            <h3 class="text-danger"><%= user.role %></h3>
+            <strong><%= user.email %></strong><br> 
         </p>
         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
@@ -27,7 +27,7 @@
                 <ul>
                 <% for(var i=0; i < users.length; i++) { %>
                    <tr>
-                     <li><%= users[i].google.name %> | <%= users[i].google.email %> | <%= users[i].google.role %></li>
+                     <li><%= users[i].name %> | <%= users[i].email %> | <%= users[i].role %></li>
                    </tr>
                 <% } %>
                 </ul>

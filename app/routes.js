@@ -54,7 +54,7 @@ module.exports = function(app, passport) {
     app.post('/api/users',function(req, res) {
         
         var user = new User();      // create a new instance of the Bear model
-        user.google.name = req.body.name;  // set the bears name (comes from the request)
+        user.name = req.body.name;  // set the bears name (comes from the request)
 
         // save the user and check for errors
         user.save(function(err) {
@@ -103,7 +103,7 @@ module.exports = function(app, passport) {
                 if (err)
                     res.send(err);
 
-                user.google.name = req.body.name;  // update the bears info
+                user.name = req.body.name;  // update the bears info
 
                 // save the bear
                 user.save(function(err) {
@@ -181,7 +181,7 @@ module.exports = function(app, passport) {
     // the callback after google has authenticated the user
     app.get('/auth/google/callback',
         passport.authenticate('google', {
-            /*if (user.google.role == 'Admin'){
+            /*if (user.role == 'Admin'){
                 successRedirect : '/admin'            
             }
             else {
@@ -195,7 +195,7 @@ module.exports = function(app, passport) {
 // route middleware to make sure a user is logged in
 /*function getUsers(req,res,next){
         var User = require('../app/models/user');
-        User.find({},{'google.name':1,'google.email':1,'google.role':1},function(err,result){
+        User.find({},{'name':1,'email':1,'role':1},function(err,result){
             if (err) {
                 console.log('Find was no good');
             }
