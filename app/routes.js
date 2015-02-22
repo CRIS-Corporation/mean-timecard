@@ -7,8 +7,8 @@ module.exports = function(app, passport) {
     app.use(bodyParser());
     // route for home page
 
-    app.get('/', function(req, res) {
-        res.render('index.ejs'); // load the index.ejs file
+    app.get('/login', function(req, res) {
+        res.render('login.ejs'); // load the index.ejs file
     });
 
     // route for showing the profile page
@@ -170,6 +170,9 @@ module.exports = function(app, passport) {
                 res.json({ message: 'Successfully deleted' });
             });
         });
+    app.get('/', isLoggedIn, function(req, res) {
+            res.sendfile('./public/views/index.html'); // load our public/index.html file
+        });
     // =====================================
     // GOOGLE ROUTES =======================
     // =====================================
@@ -187,8 +190,8 @@ module.exports = function(app, passport) {
             else {
                 successRedirect : '/profile'
             }*/
-            successRedirect : '/admin',
-            failureRedirect : '/'
+            successRedirect : '/',
+            failureRedirect : '/login'
         })
     );
 
@@ -214,6 +217,6 @@ module.exports = function(app, passport) {
             return next();
 
         // if they aren't redirect them to the home page
-        res.redirect('/');
+        res.redirect('/login');
     }
 };
