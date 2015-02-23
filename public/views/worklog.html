@@ -1,4 +1,4 @@
-<!-- public/views/home.html -->
+<!-- public/views/worklog.html -->
 
 <div class="jumbotron text-center" ng-controller="MainController">
     <div class="page-header text-center">
@@ -14,13 +14,14 @@
                 <h3 class="text-danger">{{currentUser.role}}</h3>
                     <p>
                         <!--<strong>token</strong>: <%= user.token %><br>-->
-                        <strong>Email</strong>: {{currentUser.email}}<br> 
+                        <strong>Email</strong>: {{currentUser.email}}<br>
                     </p>
                     <ul ng-repeat="worklog in worklogs">
-                        <li>{{worklog.worker}}</li>
-                        <li>{{worklog.startTime}}</li>
-                        <li>{{worklog.endTime}}</li>
-
+                        <li>Created: {{worklog.created.createdTime}}</li>
+                        <li>Worker: {{worklog.worker}}</li>
+                        <li>Start Time: {{worklog.startTime}}</li>
+                        <li>End Time: {{worklog.endTime}}</li>
+                        <li>Project: {{worklog.project}}</li>
                     </ul>
             </div>
         </div>

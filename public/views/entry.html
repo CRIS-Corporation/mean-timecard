@@ -1,0 +1,36 @@
+<!-- public/views/entry.html -->
+
+<div class="jumbotron text-center" ng-controller="MainController">
+    <div class="page-header text-center">
+        <h1>WorkLog Entry</h1>
+        <h1>{{currentUser.name}}</h1>
+    </div>
+
+    <div class="row">
+
+        <!-- GOOGLE INFORMATION -->
+        <div class="col-sm-6">
+            <div class="well">
+                <h3 class="text-danger">Enter Time Below:</h3>
+                    <form ng-submit="sendData()">
+                    Start Time:<br>
+                    <input type="text" ng-model="entryData.startTime"><br>
+                    End Time:<br>
+                    <input type="text" ng-model="entryData.endTime"><br>
+                    Project:<br>
+                    <input type="text" ng-model="entryData.project"><br>
+                    <br>
+                    <input type="submit" value="Submit">
+                </form>
+                <ul ng-repeat="worklog in worklogs">
+                        <li>Created: {{worklog.created.createdTime}}</li>
+                        <li>Worker: {{worklog.worker}}</li>
+                        <li>Start Time: {{worklog.startTime}}</li>
+                        <li>End Time: {{worklog.endTime}}</li>
+                        <li>Project: {{worklog.project}}</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>

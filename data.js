@@ -18,23 +18,22 @@ exports.createWorkLog = function(req,res,next){
 	// save the user
 	newWorkLog.save(function(err) {
 	    if (err) {
-	        console.log('Couldn\'t Save User');
+	        console.log('Couldn\'t Save Worklog');
 	    }
 	    else {
 	    	req.workLog = newWorkLog;
-	    	console.log('Saved User');
+	    	console.log('Saved Worklog');
 	    	next();
 	    }
 	});
 }
 
 exports.getWorkLogs = function(req,res,next){
-        WorkLog.find({},{'worker':1,'project':1,'startTime':1,'endTime':1},function(err,result){
+        WorkLog.find({},{'worker':1,'project':1,'startTime':1,'endTime':1,'created.createdTime':1},function(err,result){
             if (err) {
                 console.log('Work log find was no good');
             }
             else {    
-                console.log(result);
                 req.result= result;
                 next();
             } 

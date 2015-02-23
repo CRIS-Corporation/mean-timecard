@@ -7,14 +7,11 @@ WorklogService.factory('Worklog', ['$http', function($http) {
         get : function(callback) {
             $http.get('/api/worklogs')
                 .success(function(data) {
-                        if (data=='401'){
-                            $location.url('/login');
-                        }
-                        else
-                        {
-                            callback(data);
-                        }
-                    });
+                    callback(data);
+                })
+        },
+        post : function(data) {
+            return $http.post('/api/createWorklog',data);
         }
 
 

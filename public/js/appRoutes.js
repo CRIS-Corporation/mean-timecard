@@ -11,6 +11,10 @@
             templateUrl: 'views/worklog.html',
             controller: 'WorklogController'
         })
+        .when('/entry', {
+            templateUrl: 'views/entry.html',
+            controller: 'EntryController'
+        })
         // nerds page that will use the NerdController
         /*.when('/profile', {
             templateUrl: 'views/users.html',

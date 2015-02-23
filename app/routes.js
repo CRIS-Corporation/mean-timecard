@@ -74,19 +74,8 @@ module.exports = function(app, passport) {
         res.send(req.result);
     });
 
-    app.post('/api/workLogs',function(req, res) {
-        
-        var workLog = new WorkLog();      // create a new instance of the Bear model
-        workLog.startTime = req.body.startTime;  // set the bears name (comes from the request)
-
-        // save the bear and check for errors
-        workLog.save(function(err) {
-            if (err)
-                res.send(err);
-
-            res.json({ message: 'WorkLog created!' });
-        });
-        
+    app.post('/api/workLogs', Data.createWorkLog,function(req, res) {
+        res.sendStatus(200);
     });
 
     app.route('/api/users/:_id')

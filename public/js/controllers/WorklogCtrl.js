@@ -7,7 +7,6 @@ WorklogCtrl.controller('WorklogController', ['$scope','$http','Auth','Worklog',f
 	});
 	Worklog.get(function(data){
 		$scope.worklogs = data;
-		alert($scope.worklogs);
 	});
 
 
