@@ -1,18 +1,24 @@
 // public/js/appRoutes.js
-    angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-
+    angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider',function($routeProvider, $locationProvider) {
     $routeProvider
 
         // home page
-        .when('/', {
+        .when('/login', {
+            templateUrl: 'views/login.html',
+            controller: 'LoginController'
+        })
+        .when('/worklog', {
+            templateUrl: 'views/worklog.html',
+            controller: 'WorklogController'
+        })
+        // nerds page that will use the NerdController
+        /*.when('/profile', {
+            templateUrl: 'views/users.html',
+            controller: 'UserController'
+        })*/
+        .otherwise({
             templateUrl: 'views/home.html',
             controller: 'MainController'
-        })
-
-        // nerds page that will use the NerdController
-        .when('/nerds', {
-            templateUrl: 'views/nerd.html',
-            controller: 'NerdController'
         });
 
     $locationProvider.html5Mode(true);

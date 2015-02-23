@@ -4,10 +4,14 @@ module.exports = function(app, passport) {
     var Admin = require('../admin.js');
     var Data = require('../data.js');
     var bodyParser = require('body-parser');
+    var path = require('path');
     app.use(bodyParser());
     // route for home page
-
-    app.get('/login', function(req, res) {
+    /*app.get('/', function(req, res) {
+            res.sendfile('../public/index.html'); // load our public/index.html file
+        });*/
+    
+    /*app.get('/login', function(req, res) {
         res.render('login.ejs'); // load the index.ejs file
     });
 
@@ -35,8 +39,8 @@ module.exports = function(app, passport) {
     
     // route for logging out
     app.get('/logout', function(req, res) {
-        req.logout();
-        res.redirect('/');
+        c
+        res.redirect('/login');
     });
 
     app.get('/entrySuccess', function(req,res) {
@@ -46,9 +50,9 @@ module.exports = function(app, passport) {
     app.post('/enterWorkLog', isLoggedIn, Data.createWorkLog, function(req, res){
         console.log(req.workLog);
         res.redirect('/entrySuccess');
-    });
+    });*/
     // API routes
-    app.get('/api/users', Admin.getUsers, function(req, res){
+    app.get('/api/users',Admin.getUsers, function(req, res){
         res.send(req.result);
     });
     app.post('/api/users',function(req, res) {
@@ -170,9 +174,7 @@ module.exports = function(app, passport) {
                 res.json({ message: 'Successfully deleted' });
             });
         });
-    app.get('/', isLoggedIn, function(req, res) {
-            res.sendfile('./public/views/index.html'); // load our public/index.html file
-        });
+    
     // =====================================
     // GOOGLE ROUTES =======================
     // =====================================
@@ -183,17 +185,24 @@ module.exports = function(app, passport) {
 
     // the callback after google has authenticated the user
     app.get('/auth/google/callback',
-        passport.authenticate('google', {
-            /*if (user.role == 'Admin'){
-                successRedirect : '/admin'            
-            }
-            else {
-                successRedirect : '/profile'
-            }*/
-            successRedirect : '/',
-            failureRedirect : '/login'
-        })
+        passport.authenticate('google'), function (req,res){
+           //res.send(req.user);
+           res.redirect('/');
+        }
     );
+    app.get('/loggedin', function (req, res){
+        if (req.isAuthenticated()){
+            res.send(req.user);
+        }
+        else {
+            res.send('401');
+        }
+    });
+    app.get('/logout', function (req, res){
+        req.logout();
+        res.send('Logged Out');
+    });
+
 
 // route middleware to make sure a user is logged in
 /*function getUsers(req,res,next){
@@ -209,14 +218,17 @@ module.exports = function(app, passport) {
             } 
         });
     }*/
-
+    app.get('*', function(req, res) {
+            res.sendfile('public/index.html'); // load our public/index.html file
+        });
     function isLoggedIn(req, res, next) {
 
         // if user is authenticated in the session, carry on
         if (req.isAuthenticated())
+            console.log('Logged In')
             return next();
 
         // if they aren't redirect them to the home page
-        res.redirect('/login');
+        res.send(401);
     }
 };

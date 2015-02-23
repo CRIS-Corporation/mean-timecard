@@ -2,7 +2,7 @@
 
 <div class="jumbotron text-center" ng-controller="MainController">
     <div class="page-header text-center">
-        <h1>Profile Page</h1>
+        <h1>WorkLogs</h1>
         <h1>{{currentUser.name}}</h1>
     </div>
 
@@ -16,10 +16,11 @@
                         <!--<strong>token</strong>: <%= user.token %><br>-->
                         <strong>Email</strong>: {{currentUser.email}}<br> 
                     </p>
-                    <ul ng-repeat="user in users">
-                        <li>{{user.name}}</li>
-                        <li>{{user.email}}</li>
-                        <li>{{user.role}}</li>
+                    <ul ng-repeat="worklog in worklogs">
+                        <li>{{worklog.worker}}</li>
+                        <li>{{worklog.startTime}}</li>
+                        <li>{{worklog.endTime}}</li>
+
                     </ul>
             </div>
         </div>
