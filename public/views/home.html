@@ -2,27 +2,20 @@
 
 <div class="jumbotron text-center" ng-controller="MainController">
     <div class="page-header text-center">
-        <h1>Profile Page</h1>
         <h1>{{currentUser.name}}</h1>
+        <p>{{currentUser.email}}</p>
+        <p class="text-danger">{{currentUser.role}}</p>
     </div>
-
     <div class="row">
-
-        <!-- GOOGLE INFORMATION -->
-        <div class="col-sm-6">
-            <div class="well">
-                <h3 class="text-danger">{{currentUser.role}}</h3>
-                    <p>
-                        <!--<strong>token</strong>: <%= user.token %><br>-->
-                        <strong>Email</strong>: {{currentUser.email}}<br> 
-                    </p>
-                    <ul ng-repeat="user in users">
-                        <li>{{user.name}}</li>
-                        <li>{{user.email}}</li>
-                        <li>{{user.role}}</li>
-                    </ul>
+        <h3 class="text-danger">CRIS Users</h3>
+        <div class="col-sm-4" ng-repeat="user in users">
+            <div class="well infoContainer">
+                <ul class="userInfo" >
+                    <li><strong>{{user.name}}</strong></li>
+                    <li>{{user.email}}</li>
+                    <li>{{user.role}}</li>
+                </ul>
             </div>
         </div>
-
     </div>
 </div>

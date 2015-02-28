@@ -1,0 +1,10 @@
+.worklogInfo,.userInfo {
+	list-style: none;
+	padding-left: 0;
+
+}
+.infoContainer {
+	width:80%;
+	text-align:center;
+	margin: 10px auto;
+}

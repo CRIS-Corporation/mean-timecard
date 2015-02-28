@@ -2,27 +2,21 @@
 
 <div class="jumbotron text-center" ng-controller="MainController">
     <div class="page-header text-center">
-        <h1>WorkLogs</h1>
         <h1>{{currentUser.name}}</h1>
+        <p>{{currentUser.email}}</p>
+        <p class="text-danger">{{currentUser.role}}</p>
     </div>
-
     <div class="row">
-
-        <!-- GOOGLE INFORMATION -->
-        <div class="col-sm-6">
-            <div class="well">
-                <h3 class="text-danger">{{currentUser.role}}</h3>
-                    <p>
-                        <!--<strong>token</strong>: <%= user.token %><br>-->
-                        <strong>Email</strong>: {{currentUser.email}}<br>
-                    </p>
-                    <ul ng-repeat="worklog in worklogs">
-                        <li>Created: {{worklog.created.createdTime}}</li>
-                        <li>Worker: {{worklog.worker}}</li>
-                        <li>Start Time: {{worklog.startTime}}</li>
-                        <li>End Time: {{worklog.endTime}}</li>
-                        <li>Project: {{worklog.project}}</li>
-                    </ul>
+        <h3 class="text-danger">Worklogs</h3>
+        <div class="col-sm-4" ng-repeat="worklog in worklogs">
+            <div class="well infoContainer">
+                <ul class="worklogInfo">
+                    <li><strong>Created: {{worklog.created.createdTime}}</strong></li>
+                    <li><strong>Worker: {{worklog.worker}}</strong></li>
+                    <li>Start Time: {{worklog.startTime}}</li>
+                    <li>End Time: {{worklog.endTime}}</li>
+                    <li>Project: {{worklog.project}}</li>
+                </ul>
             </div>
         </div>
 
