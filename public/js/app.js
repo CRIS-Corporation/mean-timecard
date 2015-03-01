@@ -1,2 +1,2 @@
 // public/js/app.js
-var crisApp = angular.module('crisApp', ['ngRoute','appRoutes','LoginCtrl','MainCtrl','UserCtrl','WorklogCtrl','EntryCtrl','AdminCtrl','AdminService','AuthService','UserService','WorklogService']);
+var crisApp = angular.module('crisApp', ['uiAppRoutes','LoginCtrl','MainCtrl','UserCtrl','WorklogCtrl','EntryCtrl','AdminCtrl','MenuCtrl','AdminService','AuthService','UserService','WorklogService']);

@@ -1,5 +1,5 @@
 <!-- public/index.html -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- JS -->
     <script src="libs/angular/angular.js"></script>
-    <script src="libs/angular-route/angular-route.min.js"></script>
+    <script src="libs/angular-ui-router/release/angular-ui-router.js"></script>
+    
 
     <!-- ANGULAR CUSTOM -->
     <script src="js/controllers/MainCtrl.js"></script>
@@ -23,35 +24,20 @@
     <script src="js/controllers/EntryCtrl.js"></script>
     <script src="js/controllers/WorklogCtrl.js"></script>
     <script src="js/controllers/AdminCtrl.js"></script>
+    <script src="js/controllers/MenuCtrl.js"></script>
     <script src="js/services/AuthService.js"></script>
     <script src="js/services/WorklogService.js"></script>
     <script src="js/services/UserService.js"></script>
     <script src="js/services/AdminService.js"></script>
     <script src="js/app.js"></script>
-    <script src="js/appRoutes.js"></script> 
+    
+    <script src="js/uiAppRoutes.js"></script> 
+    <!-- Comment Out Sources <script src="js/appRoutes.js"><script src="libs/angular-route/angular-route.min.js"></script></script>-->
 </head>
 <body ng-app="crisApp">
 <div class="container">
-
-    <!-- HEADER -->
-    <nav class="navbar navbar-inverse">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">CRIS</a>
-        </div>
-
-        <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
-        <ul class="nav navbar-nav">
-            <li><a href="/login">Sign-In/Logout</a></li>
-            <li><a href="/">Profile</a></li>
-            <li><a href="/worklog">WorkLogs</a></li>
-            <li><a href="/entry">Entry</a></li>
-            <li><a href="/admin">Admin</a></li>
-        </ul>
-    </nav>
-
+<div ng-include="'views/menu.html'" ></div>
     <!-- ANGULAR DYNAMIC CONTENT -->
-    <div ng-view></div>
-
-</div>
+    <div ui-view></div>
 </body>
 </html>

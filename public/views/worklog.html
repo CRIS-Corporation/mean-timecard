@@ -1,11 +1,5 @@
 <!-- public/views/worklog.html -->
-
-<div class="jumbotron text-center" ng-controller="MainController">
-    <div class="page-header text-center">
-        <h1>{{currentUser.name}}</h1>
-        <p>{{currentUser.email}}</p>
-        <p class="text-danger">{{currentUser.role}}</p>
-    </div>
+<div class="jumbotron text-center" ng-controller="WorklogController">
     <div class="row">
         <h3 class="text-danger">Worklogs</h3>
         <div class="col-sm-4" ng-repeat="worklog in worklogs">

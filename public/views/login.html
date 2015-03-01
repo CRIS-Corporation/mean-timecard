@@ -1,14 +1,8 @@
 <!-- public/views/login.html -->
-
 <div class="jumbotron text-center" ng-controller="LoginController">
     <div>
         <h1>CRIS User Login</h1>
-
-        <p>Login with:</p>
-
-        <button ng-click="loggedin()" class="btn btn-danger"><span class="fa fa-google-plus"></span>CheckLogin</button>
-        <p>Status: {{data}}</p>
+        <p>Login with Google:</p>
         <a target="_self" href="/auth/google" class="btn btn-danger"><span class="fa fa-google-plus"></span>Login</a>
-        <button ng-click="logout()" class="btn btn-danger"><span class="fa fa-google-plus"></span>Logout</button>
     </div>
 </div>

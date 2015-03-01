@@ -12,6 +12,12 @@ AuthService.factory('Auth', ['$location','$http', function($location,$http) {
 	            		callback(data);
 	            	}
 	        	});
+		},
+		logout: function(){
+			$http.get('http://localhost:3000/logout')
+	    		.success(function(data) {
+	            	$location.url('/login');
+	        	});
 		}
 	}
 }]);
