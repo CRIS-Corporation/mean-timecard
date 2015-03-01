@@ -1,21 +1,17 @@
 // public/js/controllers/MenuCtrl.js
 var MenuCtrl = angular.module('MenuCtrl',[]);
-MenuCtrl.controller('MenuController',['$scope','$http','$location','Auth', function($scope,$http,$location,Auth) {
-	$scope.showMenu = false;
-	$scope.$watch('$location.path()',function(){
-		if ($location.path() != '/login'){
-			$scope.showMenu = true;
-		}
-		else {
-			$scope.showMenu = false;
-		}
+MenuCtrl.controller('MenuController',['$rootScope','$scope','$http','$location','Auth','Menu', function($rootScope,$scope,$http,$location,Auth,Menu) {
+	$rootScope.$on('$routeChangeSuccess',function(){
+		$scope.showMenu = Menu.checkMenu();
 	});
 	Auth.checkUser(function(data){
+		$scope.showMenu = Menu.checkMenu();
 		$scope.currentUser = data;
 	});
 	$scope.logout = function(){
 		Auth.logout();
-		$location.url('/login');
 		$scope.showMenu = false;
+		$location.url('/login');
+		
 	}
 }]);

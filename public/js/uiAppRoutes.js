@@ -31,7 +31,11 @@
             templateUrl: 'views/home.html',
             controller: 'MainController'
         })
-
+        .state('project', {
+            url: '/project',
+            templateUrl: 'views/project.html',
+            controller: 'ProjectController'
+        })
     $locationProvider.html5Mode(true);
 
 }]);

@@ -1,11 +1,11 @@
 // public/js/services/ProjectService.js
-var UserService = angular.module('UserService', [])
-UserService.factory('User', ['$http', function($http) {
+var ProjectService = angular.module('ProjectService', [])
+ProjectService.factory('Project', ['$http', function($http) {
 
     return {
         // call to get all nerds
         get : function(callback) {
-            $http.get('http://localhost:3000/api/users')
+            $http.get('http://localhost:3000/api/projects')
             .success(function(data) {
                 callback(data);
             }); 

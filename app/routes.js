@@ -77,7 +77,12 @@ module.exports = function(app, passport) {
     app.post('/api/workLogs', Data.createWorkLog,function(req, res) {
         res.sendStatus(200);
     });
-
+    app.get('/api/projects', Data.getProjects, function(req, res){
+        res.send(req.result);
+    });
+    app.post('/api/projects', Data.createProject,function(req, res) {
+        res.sendStatus(200);
+    });
     app.route('/api/users/:_id')
 
         // get the user with that id (accessed at GET http://localhost:8080/api/bears/:bear_id)

@@ -6,6 +6,7 @@ AuthService.factory('Auth', ['$location','$http', function($location,$http) {
 	    		.success(function(data) {
 	            	if (data=='401'){
 	            		$location.url('/login');
+	            		$location.path('/login');
 	            	}
 	            	else
 	            	{
@@ -17,6 +18,8 @@ AuthService.factory('Auth', ['$location','$http', function($location,$http) {
 			$http.get('http://localhost:3000/logout')
 	    		.success(function(data) {
 	            	$location.url('/login');
+	            	$location.path('/login');
+	            	$location.replace();
 	        	});
 		}
 	}

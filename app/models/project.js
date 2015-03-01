@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 var projectSchema = new Schema({
     
     name: String,
-    startDate: Date,
+    startTime: String,
     projectOwner: String,
     location: String
 
