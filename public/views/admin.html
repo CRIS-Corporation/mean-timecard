@@ -1,0 +1,35 @@
+<!-- public/views/admin.html -->
+
+<div class="jumbotron text-center" ng-controller="AdminController">
+    <div class="page-header text-center">
+        <h1>{{currentUser.name}}</h1>
+        <p>{{currentUser.email}}</p>
+        <p class="text-danger">{{currentUser.role}}</p>
+    </div>
+    <div class="row">
+        <h3 class="text-danger">CRIS Users</h3>
+        <div class="col-sm-4" ng-repeat="user in users">
+            <div class="well infoContainer">
+                <ul class="userInfo" >
+                    <li><strong>{{user.name}}</strong></li>
+                    <li>{{user.email}}</li>
+                    <li>{{user.role}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h3 class="text-danger">Worklogs</h3>
+        <div class="col-sm-4" ng-repeat="worklog in worklogs">
+            <div class="well infoContainer">
+                <ul class="worklogInfo">
+                    <li><strong>Created: {{worklog.created.createdTime}}</strong></li>
+                    <li><strong>Worker: {{worklog.worker}}</strong></li>
+                    <li>Start Time: {{worklog.startTime}}</li>
+                    <li>End Time: {{worklog.endTime}}</li>
+                    <li>Project: {{worklog.project}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

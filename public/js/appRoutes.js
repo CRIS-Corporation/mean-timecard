@@ -15,6 +15,10 @@
             templateUrl: 'views/entry.html',
             controller: 'EntryController'
         })
+        .when('/admin', {
+            templateUrl: 'views/admin.html',
+            controller: 'AdminController'
+        })
         // nerds page that will use the NerdController
         /*.when('/profile', {
             templateUrl: 'views/users.html',

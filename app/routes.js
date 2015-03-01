@@ -187,6 +187,19 @@ module.exports = function(app, passport) {
             res.send('401');
         }
     });
+    app.get('/checkadmin',  function (req, res){
+        if (req.isAuthenticated()){
+            if (req.user.role == "Admin"){
+                res.send(req.user);
+            }
+            else {
+                res.send('401');
+            }
+        }
+        else {
+            res.send('401');
+        }
+    });
     app.get('/logout', function (req, res){
         req.logout();
         res.send('Logged Out');

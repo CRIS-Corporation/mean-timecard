@@ -20,11 +20,12 @@ exports.isAdmin = function(req, res, next) {
     }
     else {
         if (user.role == 'Admin'){
+            res.userRole = 'Admin';
             next();
         }
         else {
             console.log('User is not Admin')
-            res.redirect('/');
+            res.userRole = 'User';
         }
     }
         
