@@ -4,17 +4,26 @@
         <div class="col-sm-offset-4 col-sm-4">
             <h3 class="text-danger">Enter Time Below:</h3>
             <div class="well">
-                 <form ng-submit="sendData()">
+                <form ng-submit="sendData()">
                     Start Time:<br>
-                    <input type="text" ng-model="entryData.startTime"><br>
+                    Month:<select ng-model="entryData.startTime.month" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in monthOptions"></select>
+                    Day:<select ng-model="entryData.startTime.day" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in dayOptions"></select>
+                    Year:<select ng-model="entryData.startTime.year" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in yearOptions"></select><br>
+                    Hour:<select ng-model="entryData.startTime.hour" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in hourOptions"></select>
+                    Minute:<select ng-model="entryData.startTime.minute" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in minuteOptions"></select><br>
+
                     End Time:<br>
-                    <input type="text" ng-model="entryData.endTime"><br>
+                    <!--<input type="text" ng-model="entryData.endTime"><br>
                     Project:<br>
                     <input type="text" ng-model="entryData.project"><br>
-                    <br>
+                    <br>-->
                     <input type="submit" value="Submit">
                 </form>
-                
+                <div id="testDate">
+                {{entryData.startTime.dateString}}<br>
+                {{entryData.startTime.timeString}}<br>
+                {{entryData.startTime.dateObject}}
+                </div>
             </div>
         </div>
     </div>
