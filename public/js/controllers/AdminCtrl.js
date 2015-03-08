@@ -10,4 +10,14 @@ AdminCtrl.controller('AdminController', ['$scope','$http','Auth','Admin','User',
 	User.get(function(data){
 		$scope.users = data;
 	});
+	$scope.deleteWorklog = function (id) {
+		var confirmation = confirm('Delete record: ' + id + '?');
+		if (confirmation) {
+			Worklog.delete(id,function(){
+				Worklog.get(function(data){
+					$scope.worklogs = data;
+				});
+			});
+		}
+	}
 }]);

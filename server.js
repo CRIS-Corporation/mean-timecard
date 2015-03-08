@@ -16,9 +16,21 @@ var configDB = require('./config/database.js');
 // configuration ===============================================================
  // connect to our database
 
-mongoose.connect(configDB.url);
+mongoose.connect(configDB.url, function(err) {
+    if (err) {
+    	console.log("Could not connect to mongo server!");
+  		return console.log(err);
+  	}
+});
 var db = mongoose.createConnection('localhost','cris');
+db.on("open", function(ref) {
+  console.log("Connected to mongo server.");
+});
 
+db.on("error", function(err) {
+  console.log("Could not connect to mongo server!");
+  return console.log(err);
+});
 require('./config/passport')(passport); // pass passport for configuration
 exports.db = db;
 // set up our express application

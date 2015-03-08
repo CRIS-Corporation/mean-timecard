@@ -12,19 +12,13 @@ WorklogService.factory('Worklog', ['$http', function($http) {
         },
         post : function(data) {
             return $http.post('/api/createWorklog',data);
-        }
-
-
-                // these will work when more API routes are defined on the Node side of things
-        // call to POST and create a new nerd
-        /*create : function(nerdData) {
-            return $http.post('/api/users', nerdData);
         },
-
-        // call to DELETE a nerd
-        delete : function(id) {
-            return $http.delete('/api/users/' + id);
-        }*/
+        delete : function(id,callback) {
+            $http.delete('/api/worklogs/' + id)
+                .success(function(data) {
+                    callback();
+                })
+        }
     }       
 
 }]);
