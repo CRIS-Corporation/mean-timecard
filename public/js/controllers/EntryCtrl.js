@@ -35,7 +35,7 @@ EntryCtrl.controller('EntryController', ['$scope','$http','Auth','Worklog',funct
 		{label: '29', value: 28},
 		{label: '30', value: 29},
 		{label: '31', value: 30},
-		{label: '32', value: 31},
+		{label: '32', value: 31}
 	];
 
 	$scope.monthOptions = [
@@ -82,46 +82,53 @@ EntryCtrl.controller('EntryController', ['$scope','$http','Auth','Worklog',funct
 		{label: '30', value: 30},
 		{label: '45', value: 45}
 	];
+	$scope.amPmOptions = [
+		{label: 'AM', value: 0},
+		{label: 'PM', value: 1}
+	];
+	$scope.parseAmPm = function (amPm) {
+		if (amPm == 'AM') {
+			return 0;
+		}
+		else {
+			return 1;
+		}
+	}
 	$scope.firstYear = 2010;
-	
-	$scope.currentDate = new Date();
-	$scope.currentDate.setUTCHours($scope.currentDate.getUTCHours() -8);
 
 	$scope.entryData = {};
 	$scope.entryData.startTime = {};
-	$scope.entryData.startTime.year = $scope.yearOptions[$scope.currentDate.getFullYear() - $scope.firstYear];
-	$scope.entryData.startTime.month = $scope.monthOptions[$scope.currentDate.getMonth()];
-	$scope.entryData.startTime.day = $scope.dayOptions[$scope.currentDate.getDay()];
-	$scope.entryData.startTime.amPm = 'AM';
-	$scope.entryData
-	$scope.from24 = function (hour){
-		if (hour > 12){
-			hour = hour - 12;
-			$scope.entryData.startTime.amPm = 'PM';
-		}
-		else if (hour == 12){
-			$scope.entryData.startTime.amPm = 'PM';
-		}
-		else {
-			$scope.entryData.startTime.amPm = 'AM';
-		}
-		return hour;
-	}
-	$scope.to24 = function (hour){
-		if ($scope.entryData.startTime.amPm == 'PM'){
-			hour = hour + 12;
-		}
-		return hour;
-	}
-	$scope.entryData.startTime.hour = $scope.hourOptions[$scope.from24($scope.currentDate.getUTCHours())-1];
+	$scope.entryData.startTime.year = $scope.yearOptions[moment().year() - $scope.firstYear];
+	$scope.entryData.startTime.month = $scope.monthOptions[moment().month()];
+	$scope.entryData.startTime.day = $scope.dayOptions[moment().day()];
+	$scope.entryData.startTime.amPm = $scope.amPmOptions[$scope.parseAmPm(moment().format('A'))];
+	$scope.entryData.startTime.hour = $scope.hourOptions[moment().format('h')-1];
 	$scope.entryData.startTime.minute = $scope.minuteOptions[0];
+	$scope.entryData.startTime.string ='';
+	
 	$scope.updateStartTime = function () {
-		$scope.entryData.startTime.dateString = $scope.entryData.startTime.year.label + '-' + $scope.entryData.startTime.month.label + '-' + $scope.entryData.startTime.day.label;
-		$scope.entryData.startTime.timeString = $scope.entryData.startTime.hour.label + ':' + $scope.entryData.startTime.minute.label + $scope.entryData.startTime.amPm;
-		$scope.entryData.startTime.dateObject = new Date($scope.entryData.startTime.year.value,$scope.entryData.startTime.month.value,$scope.entryData.startTime.day.value,$scope.to24($scope.entryData.startTime.hour.value),$scope.entryData.startTime.minute.value);
-		$scope.entryData.startTime.dateObject.setUTCHours($scope.entryData.startTime.dateObject.getUTCHours() +16);
+		
+		$scope.entryData.startTime.string = $scope.entryData.startTime.month.label + '-' + $scope.entryData.startTime.day.label + '-' + $scope.entryData.startTime.year.label + ' ' + $scope.entryData.startTime.hour.label + ':' + $scope.entryData.startTime.minute.label + ' ' + $scope.entryData.startTime.amPm.label;
+		$scope.entryData.startTime.dateObject = new Date($scope.entryData.startTime.string);
 	}
 	$scope.updateStartTime();
+	
+	$scope.entryData.endTime = {};
+	$scope.entryData.endTime.year = $scope.yearOptions[moment().year() - $scope.firstYear];
+	$scope.entryData.endTime.month = $scope.monthOptions[moment().month()];
+	$scope.entryData.endTime.day = $scope.dayOptions[moment().day()];
+	$scope.entryData.endTime.amPm = $scope.amPmOptions[$scope.parseAmPm(moment().format('A'))];
+	$scope.entryData.endTime.hour = $scope.hourOptions[moment().format('h')-1];
+	$scope.entryData.endTime.minute = $scope.minuteOptions[0];
+	$scope.entryData.endTime.string ='';
+	
+	$scope.updateEndTime = function () {
+		
+		$scope.entryData.endTime.string = $scope.entryData.endTime.month.label + '-' + $scope.entryData.endTime.day.label + '-' + $scope.entryData.endTime.year.label + ' ' + $scope.entryData.endTime.hour.label + ':' + $scope.entryData.endTime.minute.label + ' ' + $scope.entryData.endTime.amPm.label;
+		$scope.entryData.endTime.dateObject = new Date($scope.entryData.endTime.string);
+	}
+	
+	$scope.updateEndTime();
 	/*$scope.selectedDateString = $scope.selectedMonth.label + '-' + $scope.selectedDay.label + '-' + $scope.selectedYear.label;
 	$scope.$watch($scope.selectedDay,function(){
 		$scope.selectedDateString = $scope.selectedMonth.label + '-' + $scope.selectedDay.label + '-' + $scope.selectedYear.label;

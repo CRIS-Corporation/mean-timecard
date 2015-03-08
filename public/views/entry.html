@@ -11,8 +11,16 @@
                     Year:<select ng-model="entryData.startTime.year" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in yearOptions"></select><br>
                     Hour:<select ng-model="entryData.startTime.hour" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in hourOptions"></select>
                     Minute:<select ng-model="entryData.startTime.minute" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in minuteOptions"></select><br>
+                    Minute:<select ng-model="entryData.startTime.amPm" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in amPmOptions"></select><br>
 
                     End Time:<br>
+                    Month:<select ng-model="entryData.endTime.month" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in monthOptions"></select>
+                    Day:<select ng-model="entryData.endTime.day" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in dayOptions"></select>
+                    Year:<select ng-model="entryData.endTime.year" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in yearOptions"></select><br>
+                    Hour:<select ng-model="entryData.endTime.hour" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in hourOptions"></select>
+                    Minute:<select ng-model="entryData.endTime.minute" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in minuteOptions"></select><br>
+                    Minute:<select ng-model="entryData.endTime.amPm" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in amPmOptions"></select><br>
+
                     <!--<input type="text" ng-model="entryData.endTime"><br>
                     Project:<br>
                     <input type="text" ng-model="entryData.project"><br>
@@ -20,9 +28,12 @@
                     <input type="submit" value="Submit">
                 </form>
                 <div id="testDate">
-                {{entryData.startTime.dateString}}<br>
-                {{entryData.startTime.timeString}}<br>
-                {{entryData.startTime.dateObject}}
+                Start Time:<br>
+                {{entryData.startTime.string}}<br>
+                {{entryData.startTime.dateObject}}<br>
+                EndTime:<br>
+                {{entryData.endTime.string}}<br>
+                {{entryData.endTime.dateObject}}<br>
                 </div>
             </div>
         </div>
