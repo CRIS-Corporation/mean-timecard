@@ -13,8 +13,8 @@ exports.createWorkLog = function(req,res,next){
 	newWorkLog.created.createdTime = currentDate.getTime();
 	newWorkLog.created.createdUser = req.user.name;
 	newWorkLog.startTime = req.body.startTime.dateObject;
-	newWorkLog.endTime  = req.body.endTime;
-	newWorkLog.project = req.body.project;
+	newWorkLog.endTime  = req.body.endTime.dateObject;
+	newWorkLog.project = req.body.project.name;
 	newWorkLog.worker = req.user.name;
 	// save the user
 	newWorkLog.save(function(err) {

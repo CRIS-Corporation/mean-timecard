@@ -20,11 +20,9 @@
                     Hour:<select ng-model="entryData.endTime.hour" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in hourOptions"></select>
                     Minute:<select ng-model="entryData.endTime.minute" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in minuteOptions"></select><br>
                     Minute:<select ng-model="entryData.endTime.amPm" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in amPmOptions"></select><br>
-
-                    <!--<input type="text" ng-model="entryData.endTime"><br>
                     Project:<br>
-                    <input type="text" ng-model="entryData.project"><br>
-                    <br>-->
+                    <select type="text" ng-model="entryData.project" ng-options="project.name for project in projects"><br>
+                    <br>
                     <input type="submit" value="Submit">
                 </form>
                 <div id="testDate">

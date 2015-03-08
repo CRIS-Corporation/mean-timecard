@@ -1,8 +1,18 @@
 // public/js/controllers/UserCtrl.js
 var EntryCtrl = angular.module('EntryCtrl', ['ui.bootstrap']);
-EntryCtrl.controller('EntryController', ['$scope','$http','Auth','Worklog',function($scope,$http,Auth,Worklog) {
+EntryCtrl.controller('EntryController', ['$scope','$http','Auth','Worklog','Project',function($scope,$http,Auth,Worklog,Project) {
 	//Test time picker
-	
+	Auth.checkUser(function(data){
+		$scope.currentUser = data;
+	});
+	Worklog.get(function(data){
+		$scope.worklogs = data;
+	});
+	Project.get(function(data){
+		$scope.projects = data;
+		$scope.entryData.project = $scope.projects[0];
+	});
+
 	$scope.dayOptions = [
 		{label: '1', value: 0},
 		{label: '2', value: 1},
@@ -97,6 +107,7 @@ EntryCtrl.controller('EntryController', ['$scope','$http','Auth','Worklog',funct
 	$scope.firstYear = 2010;
 
 	$scope.entryData = {};
+
 	$scope.entryData.startTime = {};
 	$scope.entryData.startTime.year = $scope.yearOptions[moment().year() - $scope.firstYear];
 	$scope.entryData.startTime.month = $scope.monthOptions[moment().month()];
@@ -129,48 +140,7 @@ EntryCtrl.controller('EntryController', ['$scope','$http','Auth','Worklog',funct
 	}
 	
 	$scope.updateEndTime();
-	/*$scope.selectedDateString = $scope.selectedMonth.label + '-' + $scope.selectedDay.label + '-' + $scope.selectedYear.label;
-	$scope.$watch($scope.selectedDay,function(){
-		$scope.selectedDateString = $scope.selectedMonth.label + '-' + $scope.selectedDay.label + '-' + $scope.selectedYear.label;
-	})
-	$scope.$watch($scope.selectedMonth,function(){
-		$scope.selectedDateString = $scope.selectedMonth.label + '-' + $scope.selectedDay.label + '-' + $scope.selectedYear.label;
-	})
-	$scope.$watch($scope.selectedYear,function(){
-		$scope.selectedDateString = $scope.selectedMonth.label + '-' + $scope.selectedDay.label + '-' + $scope.selectedYear.label;
-	})
-	$scope.open = function($event) {
-	    $event.preventDefault();
-	    $event.stopPropagation();
 
-	    $scope.opened = true;
-  	};
-	$scope.selectedDay = $scope.dayOptions[$scope.currentDate.getDay()];
-	$scope.selectedYear = $scope.yearOptions[$scope.currentDate.getFullYear() - $scope.firstYear];
-	$scope.selectedMonth = $scope.monthOptions[$scope.currentDate.getMonth()];
-	$scope.selectedHour = $scope.hourOptions[$scope.from24($scope.currentDate.getUTCHours())-1];
-  	*/
-
-	
-	//$scope.entryData.startTime.hours = new Date($scope.currentDate.getFullYear(),$scope.currentDate.getMonth(),$scope.currentDate.getDay(),$scope.currentDate.getUTCHours()-8,0,0,0);
-	Auth.checkUser(function(data){
-		$scope.currentUser = data;
-	});
-	Worklog.get(function(data){
-		$scope.worklogs = data;
-	});
-	/*$scope.submit = function(){
-		$scope.entryData = {
-			'startTime': $scope.startTime,
-			'endTime': $scope.endTime,
-			'project': $scope.project
-		};
-		alert(JSON.stringify(worklog));
-		Worklog.post(worklog);
-		Worklog.get(function(data){
-			$scope.worklogs = data;
-		});
-	}*/
 	$scope.sendData = function() {
   		$http({
 	  		method  : 'POST',
@@ -181,7 +151,7 @@ EntryCtrl.controller('EntryController', ['$scope','$http','Auth','Worklog',funct
 	  	.success(function() {
 	    	Worklog.get(function(data){
 				$scope.worklogs = data;
-				$scope.entryData = {};
+				//$scope.entryData = {};
 			});
 	    })
   	}
