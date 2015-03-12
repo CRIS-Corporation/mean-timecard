@@ -1,18 +1,25 @@
-// public/js/controllers/UserCtrl.js
-var EntryCtrl = angular.module('EntryCtrl', ['ui.bootstrap']);
-EntryCtrl.controller('EntryController', ['$scope','$http','Auth','Worklog','Project',function($scope,$http,Auth,Worklog,Project) {
+var EntryDirective = angular.module('EntryDirective',[]);
+EntryDirective.directive('timeentry', function() {
+    //var testText = "Tiger";
+    var directive = {};
+    
+    //directive.restrict = 'E'; /* restrict this directive to elements */
+    directive.templateUrl = "../views/entrydir.html";
+    
+    return directive;
+});
+EntryDirective.controller('EntryDirectiveController', ['$scope','$http','Auth','Worklog','Project',function($scope,$http,Auth,Worklog,Project) {
 	//Test time picker
 	Auth.checkUser(function(data){
 		$scope.currentUser = data;
 	});
-	/*Worklog.get(function(data){
+	Worklog.get(function(data){
 		$scope.worklogs = data;
 	});
 	Project.get(function(data){
 		$scope.projects = data;
 		$scope.entryData.project = $scope.projects[0];
 	});
-
 	$scope.dayOptions = [
 		{label: '1', value: 0},
 		{label: '2', value: 1},
@@ -154,5 +161,5 @@ EntryCtrl.controller('EntryController', ['$scope','$http','Auth','Worklog','Proj
 				//$scope.entryData = {};
 			});
 	    })
-  	}*/
+  	}
 }]);

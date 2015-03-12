@@ -3,7 +3,8 @@
     <div class="row">
         <div class="col-sm-offset-4 col-sm-4">
             <h3 class="text-danger">Enter Time Below:</h3>
-            <div class="well">
+                <timeEntry></timeEntry>
+            <!--<div class="well">
                 <form ng-submit="sendData()">
                     Start Time:<br>
                     Month:<select ng-model="entryData.startTime.month" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in monthOptions"></select>
@@ -33,10 +34,10 @@
                 {{entryData.endTime.string}}<br>
                 {{entryData.endTime.dateObject}}<br>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
-    <div class="row">
+    <!--<div class="row">
         <h3 class="text-danger">Worklogs</h3>
         <div class="col-sm-4" ng-repeat="worklog in worklogs">
             <div class="well infoContainer">
@@ -49,5 +50,5 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>
