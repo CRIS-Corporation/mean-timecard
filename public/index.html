@@ -9,6 +9,9 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="js/clockpicker/dist/bootstrap-clockpicker.min.css">
+
+<!-- Input group, just add class 'clockpicker', and optional data-* -->
 
     <!-- custom styles -->
     <link rel="stylesheet" href="css/style.css">
@@ -17,6 +20,8 @@
     <script src="libs/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="libs/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="libs/moment/min/moment.min.js"></script>
+    <script src="libs/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="js/clockpicker/dist/bootstrap-clockpicker.js"></script>
 
     <!-- ANGULAR CUSTOM -->
     <script src="js/controllers/MainCtrl.js"></script>
@@ -42,9 +47,18 @@
 </head>
 <body ng-app="crisApp">
 <div class="container">
-
-<div ng-include="'views/menu.html'" ></div>
-    <!-- ANGULAR DYNAMIC CONTENT -->
+    <div ng-include="'views/menu.html'"></div>
+    <div class="input-group clockpicker" data-showhand="false" data-minuteinteral="15" data-twelvehour="true" data-placement="left" data-align="top" data-autoclose="true">
+        <input type="text" class="form-control" value="09:32">
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-time"></span>
+        </span>
+    </div>
+        <!-- ANGULAR DYNAMIC CONTENT -->
     <div ui-view></div>
+</div>
+<script type="text/javascript">
+$('.clockpicker').clockpicker();
+</script>
 </body>
 </html>
