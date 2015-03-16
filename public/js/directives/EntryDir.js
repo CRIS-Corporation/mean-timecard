@@ -13,6 +13,9 @@ EntryDirective.controller('EntryDirectiveController', ['$scope','$http','Auth','
 	Auth.checkUser(function(data){
 		$scope.currentUser = data;
 	});
+	
+
+	
 	Worklog.get(function(data){
 		$scope.worklogs = data;
 	});
@@ -122,11 +125,19 @@ EntryDirective.controller('EntryDirectiveController', ['$scope','$http','Auth','
 	$scope.entryData.startTime.amPm = $scope.amPmOptions[$scope.parseAmPm(moment().format('A'))];
 	$scope.entryData.startTime.hour = $scope.hourOptions[moment().format('h')-1];
 	$scope.entryData.startTime.minute = $scope.minuteOptions[0];
+	//$scope.entryData.startTime.hourMinute = moment().minutes(0).format('hh:mm');
+	//$('.starttimeclock').value = $scope.entryData.startTime.hourMinute;
+	$scope.entryData.startTime.entryClock = $('.clockpicker').clockpicker({
+		"default": moment().minutes(0).format('hh:mm').toString()
+	});
+	$('.starttimeclock').val(moment().minutes(0).format('hh:mm').toString()); 
+	$scope.entryData.startTime.hourMinute = $('.starttimeclock').val();//$scope.entryData.startTime.entryClock.hours;
+	alert($scope.entryData.startTime.hourMinute);
 	$scope.entryData.startTime.string ='';
 	
 	$scope.updateStartTime = function () {
-		
-		$scope.entryData.startTime.string = $scope.entryData.startTime.month.label + '-' + $scope.entryData.startTime.day.label + '-' + $scope.entryData.startTime.year.label + ' ' + $scope.entryData.startTime.hour.label + ':' + $scope.entryData.startTime.minute.label + ' ' + $scope.entryData.startTime.amPm.label;
+		//$scope.entryData.startTime.hourMinute = $('.starttimeclock').value;
+		$scope.entryData.startTime.string = $scope.entryData.startTime.month.label + '-' + $scope.entryData.startTime.day.label + '-' + $scope.entryData.startTime.year.label + ' ' + $scope.entryData.startTime.hourMinute;//$scope.entryData.startTime.hour.label + ':' + $scope.entryData.startTime.minute.label + ' ' + $scope.entryData.startTime.amPm.label;
 		$scope.entryData.startTime.dateObject = new Date($scope.entryData.startTime.string);
 	}
 	$scope.updateStartTime();

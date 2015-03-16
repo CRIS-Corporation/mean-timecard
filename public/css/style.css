@@ -10,7 +10,7 @@
 }
 .clockpicker {
 	width:auto;
-	margin-left:auto;
+	margin:auto;
 }
 .clockpicker > .form-control,.clockpicker > .input-group-addon {
 	width:auto;

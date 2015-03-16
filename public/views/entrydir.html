@@ -5,9 +5,15 @@
         Month:<select ng-model="entryData.startTime.month" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in monthOptions"></select>
         Day:<select ng-model="entryData.startTime.day" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in dayOptions"></select>
         Year:<select ng-model="entryData.startTime.year" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in yearOptions"></select><br>
-        Hour:<select ng-model="entryData.startTime.hour" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in hourOptions"></select>
+        <!--Hour:<select ng-model="entryData.startTime.hour" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in hourOptions"></select>
         Minute:<select ng-model="entryData.startTime.minute" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in minuteOptions"></select><br>
-        Minute:<select ng-model="entryData.startTime.amPm" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in amPmOptions"></select><br>
+        Minute:<select ng-model="entryData.startTime.amPm" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in amPmOptions"></select><br>-->
+        <div class="input-group clockpicker " data-showhand="false" data-minuteinterval="15" data-twelvehour="true" data-placement="left" data-align="top" data-autoclose="true">
+            <input type="text" class="form-control starttimeclock">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-time"></span>
+            </span>
+        </div>
 
         End Time:<br>
         Month:<select ng-model="entryData.endTime.month" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in monthOptions"></select>
