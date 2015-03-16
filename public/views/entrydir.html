@@ -9,7 +9,7 @@
         Minute:<select ng-model="entryData.startTime.minute" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in minuteOptions"></select><br>
         Minute:<select ng-model="entryData.startTime.amPm" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in amPmOptions"></select><br>-->
         <div class="input-group clockpicker " data-showhand="false" data-minuteinterval="15" data-twelvehour="true" data-placement="left" data-align="top" data-autoclose="true">
-            <input type="text" class="form-control starttimeclock">
+            <input type="text" class="form-control starttimeclock" ng-model="entryData.startTime.hourMinute" ng-change="updateStartTime()">
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-time"></span>
             </span>

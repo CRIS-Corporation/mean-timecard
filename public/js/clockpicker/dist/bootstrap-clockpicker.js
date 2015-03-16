@@ -148,14 +148,14 @@
 			$('<button type="button" class="btn btn-sm btn-default clockpicker-button am-button">' + "AM" + '</button>')
 				.on("click", function() {
 					self.amOrPm = "AM";
-					$('.clockpicker-span-am-pm').empty().append('AM');
+					$('.clockpicker-span-am-pm').empty().append(' AM');
 				}).appendTo(this.amPmBlock);
 				
 				
 			$('<button type="button" class="btn btn-sm btn-default clockpicker-button pm-button">' + "PM" + '</button>')
 				.on("click", function() {
 					 self.amOrPm = "PM";
-					$('.clockpicker-span-am-pm').empty().append('PM');
+					$('.clockpicker-span-am-pm').empty().append(' PM');
 				}).appendTo(this.amPmBlock);
 				
 		}
@@ -658,7 +658,7 @@
 		var last = this.input.prop('value'),
 			value = leadingZero(this.hours) + ':' + leadingZero(this.minutes);
 		if  (this.options.twelvehour) {
-			value = value + this.amOrPm;
+			value = value + ' ' + this.amOrPm;
 		}
 		
 		this.input.prop('value', value);
@@ -668,7 +668,8 @@
 				this.element.trigger('change');
 			}
 		}
-
+		this.input.triggerHandler('input');
+		alert('trigger input?');
 		if (this.options.autoclose) {
 			this.input.trigger('blur');
 		}
