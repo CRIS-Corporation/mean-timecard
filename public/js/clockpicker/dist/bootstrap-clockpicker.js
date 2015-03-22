@@ -237,6 +237,7 @@
 		}
 
 		// Clicking on minutes view space
+		//Commenting on free mouse minute selection
 		/*plate.on(mousedownEvent, function(e){
 			if ($(e.target).closest('.clockpicker-tick').length === 0) {
 				mousedown(e, true);
