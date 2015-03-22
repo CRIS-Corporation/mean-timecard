@@ -237,11 +237,11 @@
 		}
 
 		// Clicking on minutes view space
-		plate.on(mousedownEvent, function(e){
+		/*plate.on(mousedownEvent, function(e){
 			if ($(e.target).closest('.clockpicker-tick').length === 0) {
 				mousedown(e, true);
-			}
-		});
+			
+		})}*/;
 
 		// Mousedown or touchstart
 		function mousedown(e, space) {
@@ -657,12 +657,9 @@
 		var last = this.input.prop('value'),
 			//value = leadingZero(this.hours) + ':' + leadingZero(this.minutes);
 			value = this.hours + ':' + leadingZero(this.minutes);
-			//alert(value);
 		if  (this.options.twelvehour) {
 			value = value + ' ' + this.amOrPm;
 		}
-		//alert(this.input.value);
-		//alert(this.element.value);
 		this.input.prop('value', value);
 		if (value !== last) {
 			this.input.triggerHandler('change');
