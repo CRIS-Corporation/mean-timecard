@@ -99,7 +99,6 @@
 			addon = element.find('.input-group-addon'),
 			self = this,
 			timer;
-
 		this.id = uniqueId('cp');
 		this.element = element;
 		this.options = options;
@@ -656,11 +655,14 @@
 	ClockPicker.prototype.done = function() {
 		this.hide();
 		var last = this.input.prop('value'),
-			value = leadingZero(this.hours) + ':' + leadingZero(this.minutes);
+			//value = leadingZero(this.hours) + ':' + leadingZero(this.minutes);
+			value = this.hours + ':' + leadingZero(this.minutes);
+			//alert(value);
 		if  (this.options.twelvehour) {
 			value = value + ' ' + this.amOrPm;
 		}
-		
+		//alert(this.input.value);
+		//alert(this.element.value);
 		this.input.prop('value', value);
 		if (value !== last) {
 			this.input.triggerHandler('change');
@@ -668,8 +670,6 @@
 				this.element.trigger('change');
 			}
 		}
-		this.input.triggerHandler('input');
-		alert('trigger input?');
 		if (this.options.autoclose) {
 			this.input.trigger('blur');
 		}
@@ -692,6 +692,8 @@
 	// Extends $.fn.clockpicker
 	$.fn.clockpicker = function(option){
 		var args = Array.prototype.slice.call(arguments, 1);
+		//this.callback = callback;
+		//console.log(callback);
 		return this.each(function(){
 			var $this = $(this),
 				data = $this.data('clockpicker');
@@ -700,6 +702,7 @@
 				$this.data('clockpicker', new ClockPicker($this, options));
 			} else {
 				// Manual operatsions. show, hide, remove, e.g.
+
 				if (typeof data[option] === 'function') {
 					data[option].apply(data, args);
 				}

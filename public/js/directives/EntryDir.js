@@ -1,13 +1,4 @@
 var EntryDirective = angular.module('EntryDirective',[]);
-EntryDirective.directive('timeentry', function() {
-    //var testText = "Tiger";
-    var directive = {};
-    
-    //directive.restrict = 'E'; /* restrict this directive to elements */
-    directive.templateUrl = "../views/entrydir.html";
-    
-    return directive;
-});
 EntryDirective.controller('EntryDirectiveController', ['$scope','$http','Auth','Worklog','Project',function($scope,$http,Auth,Worklog,Project) {
 	//Test time picker
 	Auth.checkUser(function(data){
@@ -117,35 +108,25 @@ EntryDirective.controller('EntryDirectiveController', ['$scope','$http','Auth','
 	$scope.firstYear = 2010;
 
 	$scope.entryData = {};
-
+	$scope.currentDate = new moment(new Date());
 	$scope.entryData.startTime = {};
-	$scope.entryData.startTime.year = $scope.yearOptions[moment().year() - $scope.firstYear];
-	$scope.entryData.startTime.month = $scope.monthOptions[moment().month()];
-	$scope.entryData.startTime.day = $scope.dayOptions[moment().day()];
-	$scope.entryData.startTime.amPm = $scope.amPmOptions[$scope.parseAmPm(moment().format('A'))];
-	$scope.entryData.startTime.hour = $scope.hourOptions[moment().format('h')-1];
+	$scope.entryData.startTime.year = $scope.yearOptions[$scope.currentDate.year() - $scope.firstYear];
+	$scope.entryData.startTime.month = $scope.monthOptions[$scope.currentDate.format('M')-1];
+	$scope.entryData.startTime.day = $scope.dayOptions[$scope.currentDate.format('D')-1];
+	$scope.entryData.startTime.amPm = $scope.amPmOptions[$scope.parseAmPm($scope.currentDate.format('A'))];
+	$scope.entryData.startTime.hour = $scope.hourOptions[$scope.currentDate.format('h')-1];
 	$scope.entryData.startTime.minute = $scope.minuteOptions[0];
-	//$scope.entryData.startTime.hourMinute = moment().minutes(0).format('hh:mm');
-	//$('.starttimeclock').value = $scope.entryData.startTime.hourMinute;
+	$scope.entryData.startTime.hourMinute = $scope.currentDate.minutes(0).format('h:mm A');
 	$scope.entryData.startTime.entryClock = $('.clockpicker').clockpicker({
-		"default": moment().minutes(0).format('hh:mm A').toString()
+		"default": moment().minutes(0).format('h:mm A').toString()
 	});
-	//$('.starttimeclock').val(moment().minutes(0).format('hh:mm').toString()); 
-	$scope.entryData.startTime.hourMinute = moment().minutes(0).format('hh:mm A').toString();//$scope.entryData.startTime.entryClock.hours;
-	alert($scope.entryData.startTime.hourMinute);
 	$scope.entryData.startTime.string ='';
 	
-	$scope.updateStartTime = function () {
-		//$scope.entryData.startTime.hourMinute = $('.starttimeclock').val();
-		//console.log($scope.entryData.startTime.entryClock);
-		$scope.entryData.startTime.string = $scope.entryData.startTime.month.label + '-' + $scope.entryData.startTime.day.label + '-' + $scope.entryData.startTime.year.label + ' ' + $scope.entryData.startTime.hourMinute;//$scope.entryData.startTime.hour.label + ':' + $scope.entryData.startTime.minute.label + ' ' + $scope.entryData.startTime.amPm.label;
-		$scope.entryData.startTime.dateObject = new Date($scope.entryData.startTime.string);
+	$scope.updateStartTime = function () {	
+			$scope.entryData.startTime.string = $scope.entryData.startTime.month.label + '-' + $scope.entryData.startTime.day.label + '-' + $scope.entryData.startTime.year.label + ' ' + $scope.entryData.startTime.hourMinute;
+			$scope.entryData.startTime.dateObject = new Date($scope.entryData.startTime.string);
 	}
 	$scope.updateStartTime();
-	scope.$watch('foo', function(newValue, oldValue) {
-	  console.log(newValue);
-	  console.log(oldValue);
-	});
 	$scope.entryData.endTime = {};
 	$scope.entryData.endTime.year = $scope.yearOptions[moment().year() - $scope.firstYear];
 	$scope.entryData.endTime.month = $scope.monthOptions[moment().month()];
@@ -178,3 +159,8 @@ EntryDirective.controller('EntryDirectiveController', ['$scope','$http','Auth','
 	    })
   	}
 }]);
+EntryDirective.directive('timeentry', function() {
+    return {
+    	templateUrl: "../views/entrydir.html"
+    }
+});
