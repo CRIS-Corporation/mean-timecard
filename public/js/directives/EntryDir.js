@@ -106,45 +106,62 @@ EntryDirective.controller('EntryDirectiveController', ['$scope','$http','Auth','
 		}
 	}
 	$scope.firstYear = 2010;
-
 	$scope.entryData = {};
-	$scope.currentDate = new moment(new Date());
+	$scope.currentDate = new moment(new Date()).minutes(0);
+	$scope.startDate = new moment(new Date()).minutes(0);
+	$scope.endDate = new moment(new Date()).minutes(0);
 	$scope.entryData.startTime = {};
-	$scope.entryData.startTime.year = $scope.yearOptions[$scope.currentDate.year() - $scope.firstYear];
-	$scope.entryData.startTime.month = $scope.monthOptions[$scope.currentDate.format('M')-1];
-	$scope.entryData.startTime.day = $scope.dayOptions[$scope.currentDate.format('D')-1];
-	$scope.entryData.startTime.amPm = $scope.amPmOptions[$scope.parseAmPm($scope.currentDate.format('A'))];
-	$scope.entryData.startTime.hour = $scope.hourOptions[$scope.currentDate.format('h')-1];
-	$scope.entryData.startTime.minute = $scope.minuteOptions[0];
-	$scope.entryData.startTime.hourMinute = $scope.currentDate.minutes(0).format('h:mm A');
-	$scope.entryData.startTime.entryClock = $('.clockpicker').clockpicker({
-		"default": moment().minutes(0).format('h:mm A').toString()
-	});
-	$scope.entryData.startTime.string ='';
-	
-	$scope.updateStartTime = function () {	
-			$scope.entryData.startTime.string = $scope.entryData.startTime.month.label + '-' + $scope.entryData.startTime.day.label + '-' + $scope.entryData.startTime.year.label + ' ' + $scope.entryData.startTime.hourMinute;
-			$scope.entryData.startTime.dateObject = new Date($scope.entryData.startTime.string);
-	}
-	$scope.updateStartTime();
 	$scope.entryData.endTime = {};
-	$scope.entryData.endTime.year = $scope.yearOptions[moment().year() - $scope.firstYear];
-	$scope.entryData.endTime.month = $scope.monthOptions[moment().month()];
-	$scope.entryData.endTime.day = $scope.dayOptions[moment().day()];
-	$scope.entryData.endTime.amPm = $scope.amPmOptions[$scope.parseAmPm(moment().format('A'))];
-	$scope.entryData.endTime.hour = $scope.hourOptions[moment().format('h')-1];
-	$scope.entryData.endTime.minute = $scope.minuteOptions[0];
-	$scope.entryData.endTime.string ='';
-	
+
+	$scope.initClockDate = function(clock, moment){
+		clock.year = $scope.yearOptions[moment.format('YYYY') - $scope.firstYear];
+		clock.month = $scope.monthOptions[moment.format('M')-1];
+		clock.day = $scope.dayOptions[moment.format('D')-1];
+		clock.hourMinute = moment.format('h:mm A');
+		clock.string = clock.month.label + '-' + clock.day.label + '-' + clock.year.label + ' ' + clock.hourMinute;
+		clock.dateObject = new Date(clock.string);
+		//clock.startTime.hourMinute = moment.minutes(0).format('h:mm A');
+	}
+
+	$scope.updateClockDate = function(clock){
+		clock.string = clock.month.label + '-' + clock.day.label + '-' + clock.year.label + ' ' + clock.hourMinute;
+		clock.dateObject = new Date(clock.string);
+	}
+
+	$scope.updateStartTime = function () {	
+		$scope.updateClockDate($scope.entryData.startTime);
+		$scope.startDate = moment($scope.entryData.startTime.dateObject);
+		$scope.adjustTimeDif();
+	}
+
 	$scope.updateEndTime = function () {
-		
-		$scope.entryData.endTime.string = $scope.entryData.endTime.month.label + '-' + $scope.entryData.endTime.day.label + '-' + $scope.entryData.endTime.year.label + ' ' + $scope.entryData.endTime.hour.label + ':' + $scope.entryData.endTime.minute.label + ' ' + $scope.entryData.endTime.amPm.label;
-		$scope.entryData.endTime.dateObject = new Date($scope.entryData.endTime.string);
+		$scope.updateClockDate($scope.entryData.endTime);
+		$scope.endDate = moment($scope.entryData.endTime.dateObject);
+		//$scope.adjustTimeDif();
 	}
 	
+	$scope.adjustTimeDif = function () {
+		if ($scope.endDate <= $scope.startDate) {
+			$scope.endDate = $scope.startDate;
+			$scope.endDate.add(15, 'minutes');
+			$scope.entryData.endTime.hourMinute = $scope.endDate.format('h:mm A');
+			$scope.initClockDate($scope.entryData.endTime,$scope.endDate);
+		}
+	}
+	$scope.initClockDate($scope.entryData.startTime,$scope.startDate);
+	$scope.initClockDate($scope.entryData.endTime,$scope.endDate);
 	$scope.updateEndTime();
-
+	$scope.updateStartTime();
+	
+	
+	$scope.startClock = $('.start-time').clockpicker({
+		"default": $scope.entryData.startTime.hourMinute.toString()
+	});
+	$scope.endClock = $('.end-time').clockpicker({
+		"default": ($scope.entryData.endTime.hourMinute).toString()
+	});
 	$scope.sendData = function() {
+  		console.log($scope.entryData);
   		$http({
 	  		method  : 'POST',
 	  		url     : '/api/worklogs',

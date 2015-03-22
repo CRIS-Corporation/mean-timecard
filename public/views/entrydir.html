@@ -1,30 +1,29 @@
 <div class="well" ng-controller="EntryDirectiveController">
     <p>{{testText}}</p>
-    <form ng-submit="sendData()">
+    <form ng-submit="sendData()" class="form-inline">
         Start Time:<br>
-        Month:<select ng-model="entryData.startTime.month" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in monthOptions"></select>
-        Day:<select ng-model="entryData.startTime.day" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in dayOptions"></select>
-        Year:<select ng-model="entryData.startTime.year" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in yearOptions"></select><br>
-        <!--Hour:<select ng-model="entryData.startTime.hour" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in hourOptions"></select>
-        Minute:<select ng-model="entryData.startTime.minute" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in minuteOptions"></select><br>
-        Minute:<select ng-model="entryData.startTime.amPm" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in amPmOptions"></select><br>-->
-        <div class="input-group clockpicker " data-showhand="false" data-minuteinterval="15" data-twelvehour="true" data-placement="left" data-align="top" data-autoclose="true">
+        Month:<select ng-model="entryData.startTime.month" class="form-inline form-control" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in monthOptions"></select>
+        Day:<select ng-model="entryData.startTime.day" class="form-inline form-control" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in dayOptions"></select>
+        Year:<select ng-model="entryData.startTime.year" class="form-inline form-control" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in yearOptions"></select><br><br>
+        <div class="input-group clockpicker start-time" data-showhand="false" data-minuteinterval="15" data-twelvehour="true" data-placement="left" data-align="top" data-donetext="Done">
             <input type="text" class="form-control starttimeclock" ng-model="entryData.startTime.hourMinute" ng-change="updateStartTime()">
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-time"></span>
             </span>
-        </div>
+        </div><br>
         End Time:<br>
-        Month:<select ng-model="entryData.endTime.month" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in monthOptions"></select>
-        Day:<select ng-model="entryData.endTime.day" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in dayOptions"></select>
-        Year:<select ng-model="entryData.endTime.year" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in yearOptions"></select><br>
-        Hour:<select ng-model="entryData.endTime.hour" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in hourOptions"></select>
-        Minute:<select ng-model="entryData.endTime.minute" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in minuteOptions"></select><br>
-        Minute:<select ng-model="entryData.endTime.amPm" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in amPmOptions"></select><br>
+        Month:<select ng-model="entryData.endTime.month" class="form-control" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in monthOptions"></select>
+        Day:<select ng-model="entryData.endTime.day" class="form-inline form-control" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in dayOptions"></select>
+        Year:<select ng-model="entryData.endTime.year" class="form-inline form-control" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in yearOptions"></select><br><br>
+        <div class="input-group clockpicker end-time" data-showhand="false" data-minuteinterval="15" data-twelvehour="true"  data-align="top" data-donetext="Done">
+            <input type="text" class="form-control starttimeclock" ng-model="entryData.endTime.hourMinute" ng-change="updateEndTime()">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-time"></span>
+            </span>
+        </div><br>
         Project:<br>
-        <select type="text" ng-model="entryData.project" ng-options="project.name for project in projects"><br>
-        <br>
-        <input type="submit" value="Submit">
+        <select type="text" ng-model="entryData.project" ng-options="project.name for project in projects" class="form-control"></select><br><br>
+        <input type="submit" value="Submit" class="form-control">
     </form>
     <div id="testDate">
     Start Time:<br>
