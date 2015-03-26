@@ -1,0 +1,17 @@
+.projectInfo,.worklogInfo,.userInfo {
+	list-style: none;
+	padding-left: 0;
+
+}
+.infoContainer {
+	width:80%;
+	text-align:center;
+	margin: 10px auto;
+}
+.clockpicker {
+	width:auto;
+	margin:auto;
+}
+.clockpicker > .form-control,.clockpicker > .input-group-addon {
+	width:auto;
+}

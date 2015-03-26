@@ -1,0 +1,54 @@
+<!-- public/views/entry.html -->
+<div class="jumbotron text-center" ng-controller="EntryController">
+    <div class="row">
+        <div class="col-sm-offset-4 col-sm-4">
+            <h3 class="text-danger">Enter Time Below:</h3>
+                <timeEntry></timeEntry>
+            <!--<div class="well">
+                <form ng-submit="sendData()">
+                    Start Time:<br>
+                    Month:<select ng-model="entryData.startTime.month" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in monthOptions"></select>
+                    Day:<select ng-model="entryData.startTime.day" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in dayOptions"></select>
+                    Year:<select ng-model="entryData.startTime.year" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in yearOptions"></select><br>
+                    Hour:<select ng-model="entryData.startTime.hour" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in hourOptions"></select>
+                    Minute:<select ng-model="entryData.startTime.minute" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in minuteOptions"></select><br>
+                    Minute:<select ng-model="entryData.startTime.amPm" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in amPmOptions"></select><br>
+
+                    End Time:<br>
+                    Month:<select ng-model="entryData.endTime.month" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in monthOptions"></select>
+                    Day:<select ng-model="entryData.endTime.day" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in dayOptions"></select>
+                    Year:<select ng-model="entryData.endTime.year" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in yearOptions"></select><br>
+                    Hour:<select ng-model="entryData.endTime.hour" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in hourOptions"></select>
+                    Minute:<select ng-model="entryData.endTime.minute" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in minuteOptions"></select><br>
+                    Minute:<select ng-model="entryData.endTime.amPm" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in amPmOptions"></select><br>
+                    Project:<br>
+                    <select type="text" ng-model="entryData.project" ng-options="project.name for project in projects"><br>
+                    <br>
+                    <input type="submit" value="Submit">
+                </form>
+                <div id="testDate">
+                Start Time:<br>
+                {{entryData.startTime.string}}<br>
+                {{entryData.startTime.dateObject}}<br>
+                EndTime:<br>
+                {{entryData.endTime.string}}<br>
+                {{entryData.endTime.dateObject}}<br>
+                </div>
+            </div>-->
+        </div>
+    </div>
+    <!--<div class="row">
+        <h3 class="text-danger">Worklogs</h3>
+        <div class="col-sm-4" ng-repeat="worklog in worklogs">
+            <div class="well infoContainer">
+                <ul class="worklogInfo">
+                    <li><strong>Created: {{worklog.created.createdTime}}</strong></li>
+                    <li><strong>Worker: {{worklog.worker}}</strong></li>
+                    <li>Start Time: {{worklog.startTime}}</li>
+                    <li>End Time: {{worklog.endTime}}</li>
+                    <li>Project: {{worklog.project}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>-->
+</div>

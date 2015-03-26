@@ -1,0 +1,50 @@
+<div class="well" ng-controller="EntryDirectiveController">
+    <p>{{testText}}</p>
+    <form ng-submit="sendData()" class="form-inline">
+        Start Time:<br>
+        Month:<select ng-model="entryData.startTime.month" class="form-inline form-control" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in monthOptions"></select>
+        Day:<select ng-model="entryData.startTime.day" class="form-inline form-control" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in dayOptions"></select>
+        Year:<select ng-model="entryData.startTime.year" class="form-inline form-control" ng-change="updateStartTime()" ng-options="opt as opt.label for opt in yearOptions"></select><br><br>
+        <div class="input-group clockpicker start-time" data-showhand="false" data-minuteinterval="15" data-twelvehour="true" data-placement="left" data-align="top" data-donetext="Done">
+            <input type="text" class="form-control starttimeclock" ng-model="entryData.startTime.hourMinute" ng-change="updateStartTime()">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-time"></span>
+            </span>
+        </div><br>
+        End Time:<br>
+        Month:<select ng-model="entryData.endTime.month" class="form-control" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in monthOptions"></select>
+        Day:<select ng-model="entryData.endTime.day" class="form-inline form-control" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in dayOptions"></select>
+        Year:<select ng-model="entryData.endTime.year" class="form-inline form-control" ng-change="updateEndTime()" ng-options="opt as opt.label for opt in yearOptions"></select><br><br>
+        <div class="input-group clockpicker end-time" data-showhand="false" data-minuteinterval="15" data-twelvehour="true"  data-align="top" data-donetext="Done">
+            <input type="text" class="form-control starttimeclock" ng-model="entryData.endTime.hourMinute" ng-change="updateEndTime()">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-time"></span>
+            </span>
+        </div><br>
+        Project:<br>
+        <select type="text" ng-model="entryData.project" ng-options="project.name for project in projects" class="form-control"></select><br><br>
+        <input type="submit" value="Submit" class="form-control">
+    </form>
+    <div id="testDate">
+    Start Time:<br>
+    {{entryData.startTime.string}}<br>
+    {{entryData.startTime.dateObject}}<br>
+    EndTime:<br>
+    {{entryData.endTime.string}}<br>
+    {{entryData.endTime.dateObject}}<br>
+    </div>
+    <div>
+        <h3 class="text-danger">Worklogs</h3>
+        <div class="col-sm-6" ng-repeat="worklog in worklogs">
+            <div class="well infoContainer">
+                <ul class="worklogInfo">
+                    <li><strong>Created: {{worklog.created.createdTime}}</strong></li>
+                    <li><strong>Worker: {{worklog.worker}}</strong></li>
+                    <li>Start Time: {{worklog.startTime}}</li>
+                    <li>End Time: {{worklog.endTime}}</li>
+                    <li>Project: {{worklog.project}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -4,11 +4,15 @@ module.exports = function(app, passport) {
     var Admin = require('../admin.js');
     var Data = require('../data.js');
     var bodyParser = require('body-parser');
+    var path = require('path');
     app.use(bodyParser());
     // route for home page
-
-    app.get('/', function(req, res) {
-        res.render('index.ejs'); // load the index.ejs file
+    /*app.get('/', function(req, res) {
+            res.sendfile('../public/index.html'); // load our public/index.html file
+        });*/
+    
+    /*app.get('/login', function(req, res) {
+        res.render('login.ejs'); // load the index.ejs file
     });
 
     // route for showing the profile page
@@ -35,8 +39,8 @@ module.exports = function(app, passport) {
     
     // route for logging out
     app.get('/logout', function(req, res) {
-        req.logout();
-        res.redirect('/');
+        c
+        res.redirect('/login');
     });
 
     app.get('/entrySuccess', function(req,res) {
@@ -46,9 +50,9 @@ module.exports = function(app, passport) {
     app.post('/enterWorkLog', isLoggedIn, Data.createWorkLog, function(req, res){
         console.log(req.workLog);
         res.redirect('/entrySuccess');
-    });
+    });*/
     // API routes
-    app.get('/api/users', Admin.getUsers, function(req, res){
+    app.get('/api/users',Admin.getUsers, function(req, res){
         res.send(req.result);
     });
     app.post('/api/users',function(req, res) {
@@ -70,21 +74,15 @@ module.exports = function(app, passport) {
         res.send(req.result);
     });
 
-    app.post('/api/workLogs',function(req, res) {
-        
-        var workLog = new WorkLog();      // create a new instance of the Bear model
-        workLog.startTime = req.body.startTime;  // set the bears name (comes from the request)
-
-        // save the bear and check for errors
-        workLog.save(function(err) {
-            if (err)
-                res.send(err);
-
-            res.json({ message: 'WorkLog created!' });
-        });
-        
+    app.post('/api/workLogs', Data.createWorkLog,function(req, res) {
+        res.sendStatus(200);
     });
-
+    app.get('/api/projects', Data.getProjects, function(req, res){
+        res.send(req.result);
+    });
+    app.post('/api/projects', Data.createProject,function(req, res) {
+        res.sendStatus(200);
+    });
     app.route('/api/users/:_id')
 
         // get the user with that id (accessed at GET http://localhost:8080/api/bears/:bear_id)
@@ -170,6 +168,7 @@ module.exports = function(app, passport) {
                 res.json({ message: 'Successfully deleted' });
             });
         });
+    
     // =====================================
     // GOOGLE ROUTES =======================
     // =====================================
@@ -180,17 +179,37 @@ module.exports = function(app, passport) {
 
     // the callback after google has authenticated the user
     app.get('/auth/google/callback',
-        passport.authenticate('google', {
-            /*if (user.role == 'Admin'){
-                successRedirect : '/admin'            
+        passport.authenticate('google'), function (req,res){
+           //res.send(req.user);
+           res.redirect('/');
+        }
+    );
+    app.get('/loggedin', function (req, res){
+        if (req.isAuthenticated()){
+            res.send(req.user);
+        }
+        else {
+            res.send('401');
+        }
+    });
+    app.get('/checkadmin',  function (req, res){
+        if (req.isAuthenticated()){
+            if (req.user.role == "Admin"){
+                res.send(req.user);
             }
             else {
-                successRedirect : '/profile'
-            }*/
-            successRedirect : '/admin',
-            failureRedirect : '/'
-        })
-    );
+                res.send('401');
+            }
+        }
+        else {
+            res.send('401');
+        }
+    });
+    app.get('/logout', function (req, res){
+        req.logout();
+        res.redirect('/');
+    });
+
 
 // route middleware to make sure a user is logged in
 /*function getUsers(req,res,next){
@@ -206,14 +225,17 @@ module.exports = function(app, passport) {
             } 
         });
     }*/
-
+    app.get('*', function(req, res) {
+            res.sendfile('public/index.html'); // load our public/index.html file
+        });
     function isLoggedIn(req, res, next) {
 
         // if user is authenticated in the session, carry on
         if (req.isAuthenticated())
+            console.log('Logged In')
             return next();
 
         // if they aren't redirect them to the home page
-        res.redirect('/');
+        res.send(401);
     }
 };
